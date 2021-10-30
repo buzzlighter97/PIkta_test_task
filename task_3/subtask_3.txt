@@ -1,0 +1,13 @@
+SELECT
+  Products.product_name as Товар,
+  new_table.total_orders as 'Количество заказов'
+FROM
+  Products
+JOIN (
+SELECT
+  id_product,
+  COUNT(id_product) as total_orders
+FROM Orders
+GROUP BY id_product
+) AS new_table
+ON Products.id_product = new_table.id_product

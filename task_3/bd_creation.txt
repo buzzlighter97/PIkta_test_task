@@ -1,0 +1,43 @@
+CREATE TABLE Clients (
+  id_users INTEGER PRIMARY KEY,
+  user_name TEXT NOT NULL
+  );
+  
+INSERT INTO Clients (id_users, user_name) VALUES (1, "Иван");
+INSERT INTO Clients (id_users, user_name) VALUES (2, "Константин");
+INSERT INTO Clients (id_users, user_name) VALUES (3, "Дмитрий");
+INSERT INTO Clients (id_users, user_name) VALUES (4, "Александр");
+
+CREATE TABLE Products (
+  id_product INTEGER PRIMARY KEY,
+  product_name TEXT NOT NULL,
+  price FLOAT NOT NULL
+  );
+  
+INSERT INTO Products (id_product, product_name, price) VALUES (1, "Мяч", 299.99);
+INSERT INTO Products (id_product, product_name, price) VALUES (2, "Ручка", 18.0);
+INSERT INTO Products (id_product, product_name, price) VALUES (3, "Кружка", 159.87);
+INSERT INTO Products (id_product, product_name, price) VALUES (4, "Монитор", 18000.0);
+INSERT INTO Products (id_product, product_name, price) VALUES (5, "Телефон", 9999.9);
+INSERT INTO Products (id_product, product_name, price) VALUES (6, "Кофе", 159.0);
+
+CREATE TABLE Orders (
+  id_Order INTEGER,
+  id_users INTEGER,
+  FOREIGN KEY(id_users) REFERENCES Clients(id_users),
+  id_product INTEGER,
+  FOREIGN KEY(id_product) REFERENCES Products(id_product),
+  Order_name TEXT NOT NULL
+  );
+
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (1, 2, 2, "Закупка 1");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (1, 2, 5, "Закупка 1");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (1, 2, 1, "Закупка 1");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (2, 1, 1, "Закупка 2");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (2, 1, 3, "Закупка 2");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (2, 1, 6, "Закупка 2");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (2, 1, 2, "Закупка 2");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (3, 4, 5, "Закупка 3");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (4, 3, 6, "Закупка 4");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (4, 3, 3, "Закупка 4");
+INSERT INTO Orders (id_Order, id_users, id_product, Order_name) VALUES (2, 1, 5, "Закупка 2");

@@ -1,0 +1,12 @@
+SELECT
+  Clients.user_name as Клиент
+FROM
+  Clients
+JOIN (
+    SELECT 
+      DISTINCT id_users,
+      id_product
+    FROM Orders
+    WHERE id_product = 5
+) as new_table
+ON Clients.id_users = new_table.id_users

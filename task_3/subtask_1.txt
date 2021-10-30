@@ -1,0 +1,9 @@
+SELECT Clients.user_name as Клиент, new_table.summary as 'Общая сумма покупок'
+FROM Clients
+JOIN 
+  (SELECT id_users, SUM(price) as summary
+  FROM Products
+  JOIN Orders
+  ON Products.id_product = Orders.id_product
+  GROUP BY id_users) as new_table
+ON CLients.id_users = new_table.id_users
